@@ -95,7 +95,7 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
-  height: 250px;
+  height: 300px;
 }
 }
 
@@ -109,7 +109,7 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
-  height: 150px;
+  height: 250px;
 }
 
 }
