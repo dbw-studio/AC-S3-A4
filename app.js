@@ -1,12 +1,24 @@
 const express = require('express')
-const port = 3000
 const app = express()
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+
 const restaurantList = require('./restaurant.json')
 
 const exphbs = require('express-handlebars')
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+db.once('open', () => {
+  console.log('mongodb conneted!!')
+})
+
+
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
 
@@ -34,6 +46,6 @@ app.get('/search', (req, res) => {
   }
 })
 
-app.listen(port, () => {
-  console.log(`Server is listening localhost:${port}`)
+app.listen(3000, () => {
+  console.log('Server is listening localhost:3000')
 })
