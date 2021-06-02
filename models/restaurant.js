@@ -13,7 +13,7 @@ const restaurantSchema = new Schema({
     required: true
   },
   image: {
-    type: URL, // 待確認
+    type: String, // 放URL會錯誤
     required: true
   },
   location: {
@@ -25,7 +25,7 @@ const restaurantSchema = new Schema({
     required: true
   },
   google_map: {
-    type: URL, // 待確認
+    type: String, // 放URL會錯誤
     required: true
   },
   rating: {
