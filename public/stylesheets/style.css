@@ -15,7 +15,8 @@ header {
   z-index: -1;
   margin: -5px;
   height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+  background: #dddddd center center
+    url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
   background-size: cover;
   filter: blur(3px);
 }
@@ -32,7 +33,7 @@ header {
 }
 
 .search-bar .search-bar-inner h4 {
-  color:white;
+  color: white;
 }
 
 .form-control::placeholder {
@@ -54,14 +55,14 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card img{
+.card img {
   height: 180px;
 }
 
-.card-title{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .restaurant-category {
@@ -78,38 +79,66 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* .form-input {
+ margin-left:10px;
+ cursor:pointer;
+ height: 3rem;
+ border: 1px solid #aaaaaa;
+ border-radius: 15px;
+ -webkit-border-radius: 15px;
+ padding-left: 15px;
+} */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input:focus,
+textarea:focus {
+  background-color: #e8f8fe;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 992px) {
-  
-  .card img{
+  .card img {
     height: 115px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  
   .restaurant-show-title {
     font-size: 2rem;
   }
 
   .banner {
-  position: relative;
-  z-index: -1;
-  margin: -5px;
-  height: 300px;
-}
+    position: relative;
+    z-index: -1;
+    margin: -5px;
+    height: 300px;
+  }
 }
 
 @media screen and (max-width: 575px) {
-  
-  .card img{
+  .card img {
     height: auto;
   }
-  
-.banner {
-  position: relative;
-  z-index: -1;
-  margin: -5px;
-  height: 250px;
-}
 
+  .banner {
+    position: relative;
+    z-index: -1;
+    margin: -5px;
+    height: 250px;
+  }
 }
