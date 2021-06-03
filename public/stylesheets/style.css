@@ -79,22 +79,13 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* .form-input {
- margin-left:10px;
- cursor:pointer;
- height: 3rem;
- border: 1px solid #aaaaaa;
- border-radius: 15px;
- -webkit-border-radius: 15px;
- padding-left: 15px;
-} */
 
 input,
 select,
 textarea {
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
