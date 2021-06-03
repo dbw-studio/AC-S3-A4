@@ -32,7 +32,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   Restaurant.find()
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 
 // 新增的功能
 app.get('/restaurant/new', (req, res) => {
-  return res.render('new', { categoryOptions } )
+  return res.render('new', { categoryOptions })
 })
 
 app.post('/restaurant', (req, res) => {
@@ -124,7 +124,7 @@ app.get('/search', (req, res) => {
   const emptyNotice = 'Sorry! 無搜尋條件，請在搜尋欄輸入<span style="color:#4592af">餐廳名稱或分類</span>喔!<a href="/"><br><br><br><button class="btn btn-info">看全部餐廳</button></a>'
 
   if (keyword.length === 0) {
-    res.render('index', { emptyNotice })
+    return res.render('index', { emptyNotice })
   }
 
   return Restaurant.find()
