@@ -8,11 +8,13 @@
 
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-    <form action="/restaurants/{{ restaurant._id }}/edit" method="POST">
+    <form action="/restaurants/{{ restaurant._id }}/edit" method="POST" id="edit-form">
 
       <div class="form-group">
         <label for="name">餐廳名稱 <span class="required">*</span></label>
-        <input type="text" name="name" placeholder="黑人ㄟ店" value="{{ restaurant.name }}"  aria-describedby="name"  >
+        <input type="text" name="name" placeholder="黑人ㄟ店" value="{{ restaurant.name }}"  aria-describedby="name" required >
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">可填入中文或英文</small>
       </div>
     
@@ -23,47 +25,70 @@
 
       <div class="form-group">
         <label for="category">餐廳類型 <span class="required">*</span></label>
-        <input type="text" name="category" placeholder="台式特色料理" value="{{ restaurant.category }}" aria-describedby="category">
+        <select id="types" name="category" required>
+          <option value="{{ restaurant.category }}">{{ restaurant.category }}</option>
+            {{{ categoryOptions }}}
+        </select>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
         <label for="image">餐廳照片網址 <span class="required">*</span></label>
-        <input type="text" name="image" placeholder="http://www.photo.com/img01.jpg" value="{{ restaurant.image }}" aria-describedby="image">
+        <input type="text" name="image" placeholder="http://www.photo.com/img01.jpg" value="{{ restaurant.image }}" aria-describedby="image" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">請輸入完整圖片網址</small>
       </div>
 
       <div class="form-group">
         <label for="phone">餐廳電話 <span class="required">*</span></label>
-        <input type="text" name="phone" placeholder="(02)2662-1357" value="{{ restaurant.phone }}" aria-describedby="phone"
-        >
+        <input type="text" name="phone" placeholder="(02)2662-1357" value="{{ restaurant.phone }}" aria-describedby="phone" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">室內電話請加區碼</small>
       </div>
 
       <div class="form-group">
         <label for="location">餐廳地址 <span class="required">*</span></label>
-        <input type="text" name="location" placeholder="新北市深坑區深坑街126號" value="{{ restaurant.location }}" aria-describedby="location"
-        >
+        <input type="text" name="location" placeholder="新北市深坑區深坑街126號" value="{{ restaurant.location }}" aria-describedby="location" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
         <label for="google_map">餐廳Google map網址 <span class="required">*</span></label>
-        <input type="text" name="google_map" placeholder="https://goo.gl/maps/pAcxbn3ZLNHiUWkB8" value="{{ restaurant.google_map }}" aria-describedby="google_map">
+        <input type="text" name="google_map" placeholder="https://goo.gl/maps/pAcxbn3ZLNHiUWkB8" value="{{ restaurant.google_map }}" aria-describedby="google_map" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">請輸入完整網址</small>
       </div>
 
       <div class="form-group">
         <label for="rating">評分 <span class="required">*</span></label>
-        <input type="number" name="rating" placeholder="1~5" value="{{ restaurant.rating }}" aria-describedby="rating" min="1.0" max="5.0"  step="0.1"  inputmode="numeric">
+        <input type="number" name="rating" placeholder="1~5" value="{{ restaurant.rating }}" aria-describedby="rating" min="1.0" max="5.0"  step="0.1"  inputmode="numeric" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
-        <label for="description">餐廳簡介 <span class="required">*</span></label>
+        <label for="description">餐廳簡介</label>
         <textarea name="description" rows="6" cols="50" placeholder="餐廳位於深坑老街知名的廟口正對面，是老街最熱鬧之處。手工熬煮的麻辣湯頭，有神秘的配方，略帶中藥香氣，讓經典的麻辣臭豆腐更加美味銷魂。"  aria-describedby="description">{{ restaurant.description }}</textarea>
       </div>
 
-      <button type="submit" class="btn btn-info my-4 float-right">儲存變更</button>
+      <button type="submit" class="btn btn-info my-4 float-right" id="edit-submit">儲存變更</button>
     </form>
     </div>
 
   </div>
 </div>
+
+<script>
+  const editForm = document.querySelector('#edit-form')
+  const editSubmit = document.querySelector('#edit-submit')
+
+  editSubmit.addEventListener('click', function onEditSubmitClicked(event) {
+    console.log('edit pass')
+    editForm.classList.add('was-validated')
+  })
+</script>

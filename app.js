@@ -8,6 +8,19 @@ const bodyParser = require('body-parser')
 
 const db = mongoose.connection
 
+const categoryOptions = `<option value="台式特色料理">台式特色料理</option>
+          <option value="中式傳統料理">中式傳統料理</option>
+          <option value="日本料理">日本料理</option>
+          <option value="韓式料理">韓式料理</option>
+          <option value="泰式料理">泰式料理</option>
+          <option value="中東料理">中東料理</option>
+          <option value="義式餐廳">義式餐廳</option>
+          <option value="法式料理">法式料理</option>
+          <option value="美式">美式</option>
+          <option value="咖啡">咖啡</option>
+          <option value="酒吧">酒吧</option>
+          <option value="其他">其他</option>`
+
 db.on('error', () => {
   console.log('mongodb error!')
 })
@@ -30,7 +43,7 @@ app.get('/', (req, res) => {
 
 // 新增的功能
 app.get('/restaurant/new', (req, res) => {
-  return res.render('new')
+  return res.render('new', { categoryOptions } )
 })
 
 app.post('/restaurant', (req, res) => {
@@ -62,7 +75,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
-    .then((restaurant) => res.render('edit', { restaurant }))
+    .then((restaurant) => res.render('edit', { restaurant, categoryOptions }))
     .catch(error => console.log(error))
 })
 
@@ -108,9 +121,9 @@ app.get('/search', (req, res) => {
   const keyword = req.query.keyword
 
   const notice = `Sorry! 你搜尋的<span style="color:#4592af">${keyword}</span>，沒有相關餐廳。<a href="/"><br><br><br><button class="btn btn-info">看全部餐廳</button></a>`
-  const emptyNotice = `Sorry! 無搜尋條件，請在搜尋欄輸入<span style="color:#4592af">餐廳名稱或分類</span>喔!<a href="/"><br><br><br><button class="btn btn-info">看全部餐廳</button></a>`
+  const emptyNotice = 'Sorry! 無搜尋條件，請在搜尋欄輸入<span style="color:#4592af">餐廳名稱或分類</span>喔!<a href="/"><br><br><br><button class="btn btn-info">看全部餐廳</button></a>'
 
-  if(keyword.length === 0) {
+  if (keyword.length === 0) {
     res.render('index', { emptyNotice })
   }
 

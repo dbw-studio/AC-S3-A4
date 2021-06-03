@@ -8,11 +8,13 @@
 
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-    <form action="/restaurant" method="POST" id="add-form" onsubmit="return chk();">
+    <form action="/restaurant" method="POST" id="add-form">
 
       <div class="form-group">
         <label for="name">餐廳名稱 <span class="required">*</span></label>
-        <input type="text" name="name" placeholder="黑人ㄟ店" aria-describedby="name"  >
+        <input type="text" name="name" placeholder="黑人ㄟ店" aria-describedby="name" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">可填入中文或英文</small>
       </div>
     
@@ -23,59 +25,70 @@
 
       <div class="form-group">
         <label for="category">餐廳類型 <span class="required">*</span></label>
-        <select id="types" name="category">
+        <select id="types" name="category" required>
           <option selected disabled value="">請下拉選擇</option>
-          <option>台式特色料理</option>
-          <option value="中式傳統料理">中式傳統料理</option>
-          <option value="日式料理">日式料理</option>
-          <option value="韓式料理">韓式料理</option>
-          <option value="泰式料理">泰式料理</option>
-          <option value="印度料理">印度料理</option>
-          <option value="義式料理">義式料理</option>
-          <option value="法式料理">法式料理</option>
-          <option value="美式料理">美式料理</option>
-          <option value="其他">其他</option>
+          {{{ categoryOptions }}}
         </select>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
         <label for="image">餐廳照片網址 <span class="required">*</span></label>
-        <input type="text" name="image" placeholder="http://www.photo.com/img01.jpg" aria-describedby="image">
+        <input type="text" name="image" placeholder="http://www.photo.com/img01.jpg" aria-describedby="image" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">請輸入完整圖片網址</small>
       </div>
 
       <div class="form-group">
         <label for="phone">餐廳電話 <span class="required">*</span></label>
         <input type="text" name="phone" placeholder="(02)2662-1357" aria-describedby="phone"
-        >
+        required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">室內電話請加區碼</small>
       </div>
 
       <div class="form-group">
         <label for="location">餐廳地址 <span class="required">*</span></label>
         <input type="text" name="location" placeholder="新北市深坑區深坑街126號" aria-describedby="location"
-        >
+        required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
         <label for="google_map">餐廳Google map網址 <span class="required">*</span></label>
-        <input type="text" name="google_map" placeholder="https://goo.gl/maps/pAcxbn3ZLNHiUWkB8" aria-describedby="google_map">
+        <input type="text" name="google_map" placeholder="https://goo.gl/maps/pAcxbn3ZLNHiUWkB8" aria-describedby="google_map" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
         <small class="form-text text-muted text-right">請輸入完整網址</small>
       </div>
 
       <div class="form-group">
         <label for="rating">評分 <span class="required">*</span></label>
-        <input type="number" name="rating" placeholder="1~5" aria-describedby="rating" min="1" max="5" step="0.1" inputmode="numeric">
+        <input type="number" name="rating" placeholder="1~5" aria-describedby="rating" min="1" max="5" step="0.1" inputmode="numeric" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
       </div>
 
       <div class="form-group">
-        <label for="description">餐廳簡介 <span class="required">*</span></label>
+        <label for="description">餐廳簡介</span></label>
         <textarea name="description" rows="6" cols="50" placeholder="餐廳位於深坑老街知名的廟口正對面，是老街最熱鬧之處。手工熬煮的麻辣湯頭，有神秘的配方，略帶中藥香氣，讓經典的麻辣臭豆腐更加美味銷魂。" aria-describedby="description"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-info my-4 float-right" id="add-button">新增</button>
+      <button type="submit" class="btn btn-info my-4 float-right" id="add-submit">新增</button>
     </form>
     </div>
-
   </div>
 </div>
+
+<script>
+  const addForm = document.querySelector('#add-form')
+  const addSubmit = document.querySelector('#add-submit')
+
+  addSubmit.addEventListener('click', function onAddSubmitClicked(event) {
+    addForm.classList.add('was-validated')
+  })
+</script>
