@@ -35,8 +35,19 @@
       </p>
 
       <img class="rounded mx-auto d-block mb-4 w-100"
-        src="{{ restaurant.image }}" alt="{{ restaurant.name }}"
+        src="{{ restaurant.image }}" alt="{{ restaurant.image }}"
         style="max-width: 600px;">
     </div>
+  </div>
+  <div class="row mb-5 justify-content-center">
+    <a href="/restaurants/{{ restaurant._id }}/edit">
+      <button type="submit" class="btn btn-info mr-3">Edit</button>
+    </a>
+    <a href="/restaurants/{{ restaurant._id }}/delete">
+      <button type="submit" class="btn btn-info mr-3">Delete</button>
+    </a>
+    <a href="/">
+      <button type="submit" class="btn btn-info mr-3">Back</button>
+    </a>
   </div>
 </div>
