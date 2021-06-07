@@ -64,10 +64,8 @@
             <a href="./restaurants/{{ this._id }}">
               <button type="submit" class="btn btn-info mr-3">Detail</button>
             </a>
-            <form action="./restaurants/{{ this._id }}/delete" method="POST">
-              <a href="./restaurants/{{ this._id }}/delete">
+            <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST">          
                 <button type="submit" class="btn btn-info mr-3" id="delete-submit" onclick="return(confirm('確認要刪除【{{ this.name }}】嗎？'))">Delete</button>
-              </a>
             </form>
 
           </div>
