@@ -2,8 +2,27 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 const categoryOptions = require('./options')
-const methodOverride = require('method-override')
-router.use(methodOverride('_method'))
+
+// 新增的功能
+router.get('/new', (req, res) => {
+  return res.render('create', { categoryOptions })
+})
+
+router.post('/', (req, res) => {
+  const { name, name_en, category, image, location, phone, google_map, rating, description} = req.body
+  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// 查詢單一餐廳
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
+})
 
 // 修改單一餐廳
 router.get('/:id/edit', (req, res) => {

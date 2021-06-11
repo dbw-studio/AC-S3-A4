@@ -41,10 +41,10 @@
   </div>
   <div class="row mb-5 justify-content-center">
     <a href="/restaurants/{{ restaurant._id }}/edit">
-      <button type="submit" class="btn btn-info mr-3">Edit</button>
+      <button type="submit" class="btn btn-primary mr-3">Edit</button>
     </a>
     <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-info mr-3" onclick="return(confirm('確認要刪除【{{ restaurant.name }}】嗎？'))">Delete</button>
+        <button type="submit" class="btn btn-danger mr-3" onclick="return(confirm('確認要刪除【{{ restaurant.name }}】嗎？'))">Delete</button>
     </form>
     <a href="/">
       <button type="submit" class="btn btn-info mr-3">Back</button>
