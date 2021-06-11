@@ -3,7 +3,7 @@
 <div class="container search-bar">
   <div class="row">
     <!-- search bar -->
-    <div class="col-12 col-md-6 col-lg-4 mt-3">
+    <div class="col-12 col-md-6 col-lg-4 mt-4">
       <form action="/search">
         <div class="input-group">
           <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="搜尋餐廳、分類"
@@ -15,7 +15,7 @@
       </form>
     </div>
     {{!-- sort --}}
-    <div class="col-5 offset-7 col-md-3 offset-md-3 offset-lg-5  mt-3 text-right">
+    <div class="col-6 offset-6 col-md-3 offset-md-3 offset-lg-5  mt-4 text-right">
       <form action="/sort" method="GET">
         <div class="dropdown">
           <select name="sortMethod" type="button" class="btn btn-info dropdown-toggle" id="sortMethod" data-toggle="dropdown" onchange="this.form.submit()">
