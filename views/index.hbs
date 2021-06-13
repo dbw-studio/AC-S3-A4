@@ -1,10 +1,10 @@
 
 
 <div class="container search-bar">
-  <div class="row">
-    <!-- search bar -->
-    <div class="col-12 col-md-6 col-lg-4 mt-4">
-      <form action="/search">
+  <form action="/filter" method="GET">
+    <div class="row">
+      <!-- search bar -->
+      <div class="col-12 col-md-6 col-lg-4 mt-4">
         <div class="input-group">
           <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="搜尋餐廳、分類"
             aria-label="Restaurant Name..." value="" aria-describedby="search-button">
@@ -12,11 +12,9 @@
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
         </div>
-      </form>
-    </div>
-    {{!-- sort --}}
-    <div class="col-6 offset-6 col-md-3 offset-md-3 offset-lg-5  mt-4 text-right">
-      <form action="/sort" method="GET">
+      </div>
+      <!-- sort -->
+      <div class="col-6 offset-6 col-md-3 offset-md-3 offset-lg-5  mt-4 text-right">
         <div class="dropdown">
           <select name="sortMethod" type="button" class="btn btn-info dropdown-toggle" id="sortMethod" data-toggle="dropdown" onchange="this.form.submit()">
             <option value="_id" selected hidden>排序 Sort</option>
@@ -27,9 +25,9 @@
             <option value="location" {{#if (eq sortMethod 'location')}} selected {{/if}}>地區</option>
           </select>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
 
 
