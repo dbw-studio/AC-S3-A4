@@ -28,7 +28,7 @@ git clone https://github.com/dbw-studio/AC-S3-A4.git
 
 2.進入專案資料夾
 ```
-cd AC-S3-A4
+cd AC-S3-A8
 ```
 
 3.安裝套件
